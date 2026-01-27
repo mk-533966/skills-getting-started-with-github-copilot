@@ -18,11 +18,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = document.createElement("div");
         card.className = "activity-card";
 
+        const spotsLeft = details.max_participants - details.participants.length;
+
+        // Add option to select dropdown
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        activitySelect.appendChild(option);
+
         card.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Max Participants:</strong> ${details.max_participants}</p>
+          <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
         `;
 
         // Participants section
